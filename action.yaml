@@ -16,7 +16,7 @@ runs:
     - name: step1
       shell: bash
       run: echo Hi ${{ inputs.your_name }}
-      if: inputs.skip_step == 'true'
+      if: ${{inputs.skip_step == 'true'}}
         
     - name: step2
       run: echo os ${{runner.os}}
