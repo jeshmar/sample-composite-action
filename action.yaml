@@ -11,22 +11,18 @@ inputs:
     default: 'true'
 
 runs:
-
-using: "composite"
-    steps:
-#       - run: echo test before checkout
-#         shell: bash
-#       - uses: actions/checkout@v2
-#       - run: echo test after checkout
-#         shell: bash
-
-      - run: echo Hi ${{ inputs.your_name }}
-        if: inputs.skip_step
+  using: "composite"
+  steps:
+    - name: step1
+      run: echo Hi ${{ inputs.your_name }}
+      if: inputs.skip_step
         
-      - run: echo os ${{runner.os}}
-        shell: bash
+    - name: step2
+      run: echo os ${{runner.os}}
+      shell: bash
         
-      - run: echo action step env.foo ${{ env.foo }}
-        env: 
-          foo: this is foo 2
-        shell: bash
+    - name: step3
+      run: echo action step env.foo ${{ env.foo }}
+      env: 
+        foo: this is foo 2
+      shell: bash
