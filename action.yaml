@@ -1,0 +1,32 @@
+name: "Composite Action Test"
+
+description: "Run multiple run steps"
+
+inputs:
+  your_name:
+    description: 'Your name'
+    default: 'Ethan'
+  skip_step:
+    description: 'skip step in composite action'
+    default: 'true'
+
+runs:
+
+using: "composite"
+    steps:
+#       - run: echo test before checkout
+#         shell: bash
+#       - uses: actions/checkout@v2
+#       - run: echo test after checkout
+#         shell: bash
+
+      - run: echo Hi ${{ inputs.your_name }}
+        if: inputs.skip_step
+        
+      - run: echo os ${{runner.os}}
+        shell: bash
+        
+      - run: echo action step env.foo ${{ env.foo }}
+        env: 
+          foo: this is foo 2
+        shell: bash
