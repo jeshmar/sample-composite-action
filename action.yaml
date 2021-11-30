@@ -14,6 +14,7 @@ runs:
   using: "composite"
   steps:
     - name: step1
+      shell: bash
       run: echo Hi ${{ inputs.your_name }}
       if: inputs.skip_step == 'true'
         
